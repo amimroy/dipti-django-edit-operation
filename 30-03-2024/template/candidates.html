@@ -1,0 +1,78 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #customers {
+          font-family: Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        #customers td, #customers th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+        
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+        
+        #customers tr:hover {background-color: #ddd;}
+        
+        #customers th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: #04AA6D;
+          color: white;
+        }
+        </style>
+</head>
+<body>
+    <h1 style="text-align: center;">candidates List</h1>
+    <table id="customers">
+        <tr>
+          <th>full_name</th>
+          <th>email</th>
+          <th>phone_number</th>
+          <th>address</th>
+          <th>job_title</th>
+          <th>linkedin_profile</th>
+          <th>university</th>
+          <th>degree</th>
+          <th>languages</th>
+          <th>years_of_experience</th>
+          <th>Action</th>
+        </tr>
+        
+        {% for i in candi %}
+        <tr>
+            <td> {{i.full_name}} </td>
+            <td> {{i.email}} </td>
+            <td> {{i.phone_number}} </td>
+            <td> {{i.address}} </td>
+            <td> {{i.job_title}} </td>
+            <td> {{i.linkedin_profile}} </td>
+            <td> {{i.university}} </td>
+            <td> {{i.degree}} </td>
+            <td> {{i.languages}} </td>
+            <td> {{i.years_of_experience}} </td>
+            <td> 
+                <a href="{% url 'deleteCandi' i.id %}">Delete</a> 
+                <a href="{% url 'editCandi' i.id %}">edit</a> 
+                <a href="#">view</a> 
+            </td>
+
+          </tr>
+        {% endfor %}
+            
+      </table>
+</body>
+</html>
+{% endblock content %}
+    
